@@ -48,7 +48,7 @@ ${product.reviews
   .join("\n\n")}`;
 
   const query = {
-    model: "pplx-7b-chat",
+    model: "llama-3.1-sonar-small-128k-online",
     stream: true,
     messages: buildPrompt(prompt),
     max_tokens: 1000,
