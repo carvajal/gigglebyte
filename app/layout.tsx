@@ -1,49 +1,56 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
 import Link from "next/link";
-import { sampleProductsReviews } from "@/lib/sample-data";
+import Image from "next/image";
+import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Review summary",
-  description: "AI summaries of customer reviews",
+  title: "Gigglebyte",
+  description: "Generated jokes using Together.ai API",
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
-  const products = sampleProductsReviews;
+}) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <nav className="flex justify-around py-4 border-b mb-8">
-          {Object.keys(products).map((productId) => (
+      <body className="flex flex-col min-h-screen">
+        {/* Header */}
+        <header className="bg-white shadow-md">
+          <div className="container mx-auto py-4">
+            <h1 className="text-center text-2xl font-bold">Gigglebyte</h1>
+          </div>
+        </header>
+
+        {/* Main Content */}
+        <main className="flex-1 container mx-auto py-8">{children}</main>
+
+        {/* Footer */}
+        <footer className="bg-gray-100 p-4">
+          <div className="container mx-auto flex justify-between items-center">
+            <div className="text-gray-600">
+              Powered by{" "}
+              <Link href="https://together.ai" target="_blank" className="underline">
+                Together.ai
+              </Link>
+            </div>
             <Link
-              key={productId}
-              className="text-lg font-semibold"
-              href={`/${productId}`}
+              href="https://github.com/carvajal/gigglebyte"
+              target="_blank"
+              className="flex gap-x-2 items-center space-x-2 text-gray-600 underline"
             >
-              {products[productId].name}
+              <Image
+                src="/github-mark.svg"
+                alt="GitHub Logo"
+                width={20}
+                height={20}
+              />
+              GitHub
             </Link>
-          ))}
-        </nav>
-        <p className="text-center text-gray-500 mb-8">
-          This is a demo of AI-generated summaries of customer reviews. To learn
-          more, see the{" "}
-          <Link
-            className="underline"
-            target="_blank"
-            href="https://vercel.com/templates/next.js/customer-reviews-ai-summary-nextjs-vercel"
-          >
-            complete template
-          </Link>
-          .{"\n          "}
-        </p>
-        <main className="pt-6">{children}</main>
+          </div>
+        </footer>
       </body>
     </html>
   );
