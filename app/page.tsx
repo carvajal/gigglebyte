@@ -39,5 +39,9 @@ export const generateJoke = async () => {
 
 export default async function Home() {
   const joke = await generateJoke();
-  return <>{joke}</>;
+  return (
+    <div className="flex justify-center mt-16">
+      <p className="max-w-3xl text-center">{joke}</p>
+    </div>
+  );
 }
