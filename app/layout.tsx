@@ -28,7 +28,7 @@ export default function RootLayout({
         <main className="flex-1 container mx-auto py-8">{children}</main>
 
         {/* Footer */}
-        <footer className="bg-gray-100 py-4">
+        <footer className="bg-gray-100 p-4">
           <div className="container mx-auto flex justify-between items-center">
             <div className="text-gray-600">
               Powered by{" "}
