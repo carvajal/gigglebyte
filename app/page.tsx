@@ -1,6 +1,6 @@
 import Together from "together-ai";
 
-export const generateJoke = async () => {
+const generateJoke = async () => {
   const today = new Date();
   const month = today.toLocaleString("default", { month: "long" }); // e.g., "December"
   const day = today.getDate(); // e.g., 1
